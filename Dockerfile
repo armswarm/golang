@@ -9,6 +9,8 @@ RUN \
       --no-cache \
       --repository http://dl-3.alpinelinux.org/alpine/edge/community \
       ca-certificates \
+      git \
+      musl-dev \
       go={{GOLANG_PACKAGE}} \
     && mkdir -p "$GOPATH/src" "$GOPATH/bin" \
     && chmod -R 777 "$GOPATH"
