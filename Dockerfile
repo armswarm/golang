@@ -13,7 +13,8 @@ RUN \
       musl-dev \
       go={{GOLANG_PACKAGE}} \
     && mkdir -p "$GOPATH/src" "$GOPATH/bin" \
-    && chmod -R 777 "$GOPATH"
+    && chmod -R 777 "$GOPATH" \
+    && go install cmd/cover
 
 WORKDIR $GOPATH
 
