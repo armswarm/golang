@@ -1,0 +1,27 @@
+pipeline:
+  prepare:
+    image: quay.io/armswarm/alpine:3.5
+    environment:
+      - ALPINE_VERSION=3.5
+      - GOLANG_VERSION=1.8.1
+      - GOLANG_PACKAGE=1.8.1-r0
+    commands:
+      - |-
+          sed -i \
+            -e "s/{{GOLANG_VERSION}}/${GOLANG_VERSION}/" \
+            -e "s/{{GOLANG_PACKAGE}}/${GOLANG_PACKAGE}/" \
+            -e "s/{{ALPINE_VERSION}}/${ALPINE_VERSION}/" \
+            Dockerfile
+
+  build:
+    image: armswarmdrone/docker
+    repo: quay.io/armswarm/golang
+    tag: [ "1.8.1-alpine", "1.8-alpine", "1-alpine", "alpine" ]
+    when:
+      branch: master
+      event: push
+
+  slack:
+    image: armswarmdrone/slack
+    when:
+      status: [ failure, success ]
