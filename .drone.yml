@@ -1,3 +1,5 @@
+platform: linux/arm
+
 clone:
   git:
     image: armswarmdrone/git
@@ -17,7 +19,7 @@ pipeline:
             -e "s/{{ALPINE_VERSION}}/${ALPINE_VERSION}/" \
             Dockerfile
 
-  build:
+  build_and_publish:
     image: armswarmdrone/docker
     repo: quay.io/armswarm/golang
     tag: [ "1.8.1-alpine", "1.8-alpine", "1-alpine", "alpine" ]
@@ -25,7 +27,7 @@ pipeline:
       branch: master
       event: push
 
-  slack:
+  notify:
     image: armswarmdrone/slack
     when:
       status: [ failure, success ]
