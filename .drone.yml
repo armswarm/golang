@@ -6,9 +6,9 @@ clone:
 
 pipeline:
   prepare:
-    image: quay.io/armswarm/alpine:3.5
+    image: quay.io/armswarm/alpine:3.6
     environment:
-      - ALPINE_VERSION=3.5
+      - ALPINE_VERSION=3.6
       - GOLANG_VERSION=1.8.1
       - GOLANG_PACKAGE=1.8.1-r0
     commands:
