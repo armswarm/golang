@@ -36,4 +36,4 @@ services:
   docker:
     image: quay.io/armswarm/docker:17-dind
     command: [ "--storage-driver=vfs", "--tls=false" ]
-   privileged: true
+    privileged: true
