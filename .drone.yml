@@ -23,7 +23,6 @@ pipeline:
     image: armswarmdrone/docker
     repo: quay.io/armswarm/golang
     tag: [ "1.9.0-alpine", "1.9-alpine", "1-alpine", "alpine" ]
-    privileged: true
     when:
       branch: master
       event: push
@@ -32,3 +31,9 @@ pipeline:
     image: armswarmdrone/slack
     when:
       status: [ failure, success ]
+
+services:
+  docker:
+    image: quay.io/armswarm/docker:17-dind
+    command: [ "--storage-driver=vfs", "--tls=false" ]
+   privileged: true
