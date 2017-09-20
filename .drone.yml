@@ -9,8 +9,8 @@ pipeline:
     image: quay.io/armswarm/alpine:3.6
     environment:
       - ALPINE_VERSION=3.6
-      - GOLANG_VERSION=1.8.1
-      - GOLANG_PACKAGE=1.8.1-r0
+      - GOLANG_VERSION=1.9.0
+      - GOLANG_PACKAGE=1.9-r2
     commands:
       - |-
           sed -i \
@@ -22,7 +22,7 @@ pipeline:
   build_and_publish:
     image: armswarmdrone/docker
     repo: quay.io/armswarm/golang
-    tag: [ "1.8.1-alpine", "1.8-alpine", "1-alpine", "alpine" ]
+    tag: [ "1.9.0-alpine", "1.9-alpine", "1-alpine", "alpine" ]
     when:
       branch: master
       event: push
