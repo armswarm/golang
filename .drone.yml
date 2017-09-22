@@ -14,9 +14,9 @@ pipeline:
     commands:
       - |-
           sed -i \
-            -e "s/{{GOLANG_VERSION}}/${GOLANG_VERSION}/" \
-            -e "s/{{GOLANG_PACKAGE}}/${GOLANG_PACKAGE}/" \
-            -e "s/{{ALPINE_VERSION}}/${ALPINE_VERSION}/" \
+            -e "s/{{GOLANG_VERSION}}/$${GOLANG_VERSION}/" \
+            -e "s/{{GOLANG_PACKAGE}}/$${GOLANG_PACKAGE}/" \
+            -e "s/{{ALPINE_VERSION}}/$${ALPINE_VERSION}/" \
             Dockerfile
 
   build_and_publish:
