@@ -7,7 +7,7 @@ ENV GOLANG_VERSION={{GOLANG_VERSION}} \
 RUN \
     apk add \
       --no-cache \
-      --repository http://dl-3.alpinelinux.org/alpine/edge/community \
+      --repository https://ftp.acc.umu.se/mirror/alpinelinux.org/edge/community \
       ca-certificates \
       git \
       musl-dev \
